@@ -7,11 +7,11 @@ import { nanoid } from 'nanoid';
 
 export class App extends Component {
   state = {
-    contacts: [ ],
+    contacts: [],
     filter: '',
   };
 
-   componentMount() {
+   componentDidMount() {
     const contacts = localStorage.getItem('contacts');
     const parsedContacts = JSON.parse(contacts);
     if (parsedContacts) {
@@ -19,7 +19,7 @@ export class App extends Component {
     }
   }
 
-  componentDidUpdate( prevState ) {
+  componentDidUpdate(prevProps, prevState ) {
     if (this.state.contacts !== prevState.contacts) {
       console.log('renewed contacts');
       localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
